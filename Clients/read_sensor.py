@@ -5,7 +5,7 @@ port = 25565
 host = "192.168.0.111"
 
 connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-connection.connect(host, port)
+connection.connect((host, port))
 
 sensor = W1ThermSensor()
 
