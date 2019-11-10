@@ -2,7 +2,7 @@
 import time
 import socket
 
-HOST = "localhost"
+HOST = "192.168.0.111"
 PORT = 25565
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
