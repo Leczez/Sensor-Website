@@ -1,8 +1,7 @@
-from w1thermsensor import W1ThermSensor
+from ds18b20 import DS18B20
 
 
-
-sensor = W1ThermSensor()
+sensor = DS18B20()
 
 
 print(sensor.get_temperature())
