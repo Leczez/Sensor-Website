@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from ds18b20 import DS18B20
 import os
 
