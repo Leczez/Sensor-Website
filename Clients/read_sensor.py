@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-from ds18b20 import DS18B20
+from w1thermsensor import W1ThermSensor
 import os
 
-sensor = DS18B20()
+sensor = W1ThermSensor()
 file = open("ThePool", "w")
 
 while True:
