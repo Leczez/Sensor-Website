@@ -1,11 +1,11 @@
 from ds18b20 import DS18B20
-
+import os
 
 sensor = DS18B20()
+file = open("ThePool", "w")
 
-
-print(sensor.get_temperature())
-
+while True:
+    file.write(sensor.get_temperature())
 
 
 
