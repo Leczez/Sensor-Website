@@ -32,7 +32,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 Husvagn = data.split(":")
                 try:
                     with open("Husvagnen.txt", "w") as f2:
-                        f2.write(Husvagn[1])
+                        f2.write(Husvagn[2])
                 except OSError:
                     # time.sleep(2)
                     print("Couldn't open text file")
