@@ -10,7 +10,7 @@ connection.connect((host, port))
 
 file = open("ThePool", "r")
 
-while connection.send(file):
+while connection.send("Hus:".encode("utf-8") + file.encode("utf-8")):
     print(file)
 
 file.close()
