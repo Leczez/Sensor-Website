@@ -11,7 +11,8 @@ file = open("ThePool", "r")
 
 while True:
     message = file.read()
-    connection.send("Hus:".encode("utf-8") + message.encode("utf-8"))
+    message += "Hus:"
+    connection.send(message.encode("utf-8"))
     print(message)
 
 
