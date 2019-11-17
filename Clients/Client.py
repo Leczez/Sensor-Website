@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # client py
+import time
 import socket
 
 port = 25565
@@ -12,6 +13,7 @@ file = open("ThePool", "r")
 while True:
     message = file.read()
     message += "Hus:"
+    time.sleep(2)
     connection.send(message.encode("utf-8"))
     print(message)
 
