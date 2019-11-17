@@ -13,7 +13,7 @@ file = open("ThePool", "r")
 while True:
     message = file.read()
     message += "Hus:"
-    time.sleep(2)
+    time.sleep(10)
     connection.send(message.encode("utf-8"))
     print(message)
 
