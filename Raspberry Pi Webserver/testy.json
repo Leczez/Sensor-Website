@@ -1,0 +1,11 @@
+
+  {
+    "test_dummy": {
+      "address": "192.168.0.84",
+      "status": "okay"
+    },
+    "test_dummy2": {
+      "address": "192.168.0.80",
+      "status": "not okay"
+    }
+  }

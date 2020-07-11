@@ -1,17 +1,12 @@
-
-
-
 {   
-    "device1":
+    "test_dummy":
     {
-        "name":"test_dummy",
         "address":"192.168.0.84",
         "status":"okay"
     },
 
-    "device2":
+    "test_dummy2":
     {
-        "name":"test_dummy 2",
         "address":"192.168.0.80",
         "status":"not okay"
     }
