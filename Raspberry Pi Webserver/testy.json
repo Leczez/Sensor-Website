@@ -1,11 +1,12 @@
-
-  {
-    "test_dummy": {
-      "address": "192.168.0.84",
-      "status": "okay"
-    },
-    "test_dummy2": {
-      "address": "192.168.0.80",
-      "status": "not okay"
-    }
+{
+  "test_dummy2": {
+    "version": 1,
+    "address": "192.168.0.80",
+    "status": "not okay"
+  },
+  "test_dummy": {
+    "version": 2,
+    "address": "192.168.0.60",
+    "status": "fine"
   }
+}

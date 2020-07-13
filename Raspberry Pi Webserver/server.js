@@ -38,14 +38,32 @@ function addDevice(req, res, body)
             var keys = Object.keys(data);
             var word = keys[0];
 
-            json[word] = data[word];
+            if(word in json)
+            {
+                console.log("exists in json");
+                console.log(JSON.stringify(data[word]["version"]));
+                console.log(JSON.stringify(json[word]["version"]));
+                if(data[word]["version"] != json[word]["version"])
+                {
+                    console.log("not same version");
+                    delete json[word];
+                    json[word] = data[word];
+                    console.log("version change " + json);
+
+                }
+                
+            }else
+            {
+                json[word] = data[word];
+            }
+
+
+            
 
             console.log(json);
             //console.log(data);
             //console.log(keys[0]);
             
-
-            /*
             try
             {
                 fs.writeFile("testy.json", JSON.stringify(json, null, 2), function(err)
@@ -64,7 +82,6 @@ function addDevice(req, res, body)
                 console.log(error);
                 throw error;    
             }
-            */
         }
         
         
