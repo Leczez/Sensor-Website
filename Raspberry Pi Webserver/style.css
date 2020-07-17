@@ -1,10 +1,12 @@
 
-body {
+body
+{
   background-color: LightBlue;
   text-align: center;
 }
 
-#rpi {
+#rpi
+{
   text-align: center;
   margin-bottom: 75px;
   font-size: 75px;
@@ -12,10 +14,9 @@ body {
 
 
 
-#mydata {
+#mydata 
+{
   background-color: MintCream;
-  h2.font-family: serif, "Times New Roman";
-  p.font-family: serif, "Times New Roman";
   text-align: left;
   width: 300px;
   margin-left: 200px;

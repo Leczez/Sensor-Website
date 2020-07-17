@@ -4,7 +4,7 @@ var http = require('http');
 var url = require('url');
 var fs = require('fs');
 
-var host = '192.168.0.84';
+//var host = '192.168.0.84';
 var port = 8080;
 
 var index = fs.readFileSync("index.html");
@@ -35,6 +35,8 @@ function addDevice(req, res, body)
             var json = JSON.parse(device_register);
             console.log(json);
 
+            var bool = false;
+
             var keys = Object.keys(data);
             var word = keys[0];
 
@@ -49,12 +51,14 @@ function addDevice(req, res, body)
                     delete json[word];
                     json[word] = data[word];
                     console.log("version change " + json);
+                    bool = true;
 
                 }
                 
             }else
             {
                 json[word] = data[word];
+                bool = true;
             }
 
 
@@ -63,32 +67,33 @@ function addDevice(req, res, body)
             console.log(json);
             //console.log(data);
             //console.log(keys[0]);
-            
-            try
+            console.log(bool);
+            if(bool)
             {
-                fs.writeFile("testy.json", JSON.stringify(json, null, 2), function(err)
+                try
                 {
-                    if(err)
-                    { 
-                        console.log(err);
-                        throw err;
-                    }else
+                    fs.writeFile("testy.json", JSON.stringify(json, null, 2), function(err)
                     {
-                        console.log("The file has been saved");
-                    }
-                });    
-            } catch (error)
-            {
-                console.log(error);
-                throw error;    
-            }
+                        if(err)
+                        { 
+                            console.log(err);
+                            throw err;
+                        }else
+                        {
+                            console.log("The file has been saved");
+                        }
+                    });    
+                } catch (error)
+                {
+                    console.log(error);
+                    throw error;    
+                }
+            }    
+            res.statusCode = 200;
+            res.end("POST Successful");
         }
-        
-        
 
-        
-        res.statusCode = 200;
-        res.end("POST Successful");
+
 
     } catch (error) 
     {
@@ -183,7 +188,7 @@ const request_handler = function(req, res)
 
 
 //Create the http server object
-const server = http.createServer(request_handler).listen(port, host,()=>
+const server = http.createServer(request_handler).listen(port,()=>
 {
-    console.log(`Server is running on http://${host}:${port}`);
+    console.log(`Server is running on:${port}`);
 });
