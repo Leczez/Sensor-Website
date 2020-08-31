@@ -135,6 +135,7 @@ function change_device_info(req, res)
                 return;
             }
             
+            //Read incoming JSON
             var message_json;
             try
             {
@@ -145,6 +146,7 @@ function change_device_info(req, res)
                 error = true;
             }
 
+            //Read File Json
             var data_json;
             try
             {
@@ -155,12 +157,17 @@ function change_device_info(req, res)
                 error = true;
             }
             console.log(message_json);
+            console.log(message_json);
+            console.log(data_json);
             if(error)
             {
                 return;
             }
             message_keys = Object.keys(message_json);
             console.log(message_keys);
+
+            data_keys = Object.keys(data_json);
+            console.log(data_keys);
 
             //find device
 
