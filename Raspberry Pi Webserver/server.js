@@ -105,6 +105,78 @@ function addDevice(req, res, body)
 
 }
 
+
+function change_device_info(req, res)
+{
+    //storage container for message
+    var message = "";
+
+    //get the message
+    req.on('data', function(data)
+    {   
+        message += data;
+    });
+
+    //Parse the data
+    req.on('end', function()
+    {
+        console.log(message);
+        
+        //read json file
+        fs.readFile("device_register.json", function(err, data)
+        {
+            //find element in file
+            
+            var error = false;
+
+            if(err)
+            {
+                res.end(err);
+                return;
+            }
+            
+            var message_json;
+            try
+            {
+                message_json = JSON.parse(message);
+            }catch
+            {
+                res.end("Error: bad input JSON");
+                error = true;
+            }
+
+            var data_json;
+            try
+            {
+                data_json = JSON.parse(data);
+            }catch
+            {
+                res.end("Error: bad JSON");
+                error = true;
+            }
+            console.log(message_json);
+            if(error)
+            {
+                return;
+            }
+            message_keys = Object.keys(message_json);
+            console.log(message_keys);
+
+            //find device
+
+            //check if valid and if new values != old value
+
+
+        });      
+        
+        console.log("outside callback");
+
+
+    });
+
+}
+
+
 function POST(req, res)
 {
     var body = "";
@@ -172,16 +244,48 @@ function GET(req, res, q)
 }
 
 
+function PUT(req, res)
+{
+    //check if url is valid
+    switch(req.url)
+    {
+        case "/devices":
+            //check stuff
+            console.log("/devices");
+            change_device_info(req, res);
+            break;
+
+
+
+        default:
+            res.write("Error: Invalid PUT request");
+            res.end();
+            break;
+
+    }
+}
+
+
+
 const request_handler = function(req, res)
 {
     var q = url.parse(req.url, true);
-    if(req.method == "POST")
+    switch(req.method)
     {
-        POST(req, res);
+        case "POST":
 
-    }else if(req.method == "GET")
-    {
-        GET(req, res, q);
+            POST(req, res);
+            break;
+
+        case "GET":
+
+            GET(req, res, q);
+            break;
+        case "PUT":
+
+            PUT(req, res);
+            break;
+
     }
 }
 
